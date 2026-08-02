@@ -9,7 +9,10 @@
   "scripts": {
     "build": "node node_modules/typescript/lib/tsc.js && chmod 755 build/index.js",
     "typecheck": "node node_modules/typescript/lib/tsc.js --noEmit",
-    "start": "node build/index.js"
+    "start": "node --env-file=.env build/index.js",
+    "start:http": "node --env-file=.env build/http.js",
+    "dev": "node --env-file=.env --watch --import tsx src/index.ts",
+    "dev:http": "node --env-file=.env --watch --import tsx src/http.ts"
   },
   "files": [
     "build"
@@ -36,6 +39,7 @@
   "devDependencies": {
     "@types/node": "^26.1.2",
     "install": "^0.13.0",
+    "tsx": "^4.23.1",
     "typescript": "^7.0.2"
   }
 }

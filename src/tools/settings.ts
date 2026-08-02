@@ -1,7 +1,7 @@
 import type { McpServer } from "@modelcontextprotocol/server";
 
 import { requestAuth } from "../auth/request.js";
-import { getDateTimeFormats, getSettings } from "../services/settings.js";
+import { getSettings } from "../services/settings.js";
 import { jsonResult } from "./result.js";
 
 export function registerSettingsTools(server: McpServer): void {
@@ -12,14 +12,5 @@ export function registerSettingsTools(server: McpServer): void {
       description: "Get the current AnyRem user settings.",
     },
     async (ctx) => jsonResult(await getSettings(requestAuth(ctx))),
-  );
-
-  server.registerTool(
-    "anyrem_get_date_time_formats",
-    {
-      title: "Get Date Time Formats",
-      description: "List supported AnyRem date and time formats.",
-    },
-    async (ctx) => jsonResult(await getDateTimeFormats(requestAuth(ctx))),
   );
 }
